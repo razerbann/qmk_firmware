@@ -80,14 +80,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * -------------------------------------------------               -------------------------------------------------
  * |L_SFT_<|       |       |       |       |       |               |   0   |   1   |   2   |   3   |Pg_DOWN|R_SFT_|
  * -----------------------------------------------------------------------------------------------------------------
- *           HOME     END          |  WIN  | SPACE |L_CTL_H|R_ALT_E|  DEL  |L_ALT_0|        Pg_DOWN  Pg_UP
+ *                                 |  WIN  | SPACE |L_CTL_H|R_ALT_E|  DEL  |L_ALT_0|        Pg_DOWN  Pg_UP
  *                                 -------------------------------------------------
  */
 	[3] = LAYOUT_ortho_4x12(
 		KC_ESC, FR_1, FR_2, FR_3, FR_4, FR_5, FR_6, FR_7, FR_8, FR_9, FR_0, KC_BSPC,
 		KC_TAB, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, FR_4, FR_5, FR_6, KC_PGUP, KC_ENT,
 		LSFT_T(FR_LESS), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, FR_0, FR_1, FR_2, FR_3, KC_PGDN, LSFT_T(FR_GRTR),
-		KC_NO, KC_HOME, KC_END, KC_LGUI, KC_SPC, LCTL_T(KC_HOME), RALT_T(KC_END), KC_DEL, LALT_T(FR_0), KC_PGUP, KC_PGDN, KC_NO
+		KC_NO, KC_NO, KC_NO, KC_LGUI, KC_SPC, LCTL_T(KC_HOME), RALT_T(KC_END), KC_DEL, LALT_T(FR_0), KC_PGUP, KC_PGDN, KC_NO
 	),
 
 /*
@@ -99,14 +99,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * -------------------------------------------------               -------------------------------------------------
  * |       |       |       |       |       |  Fn5  |               |  Fn9  |  F10  |  F11  |  F12  |       |PRT_SCR|
  * -----------------------------------------------------------------------------------------------------------------
- *           HOME     END          |  WIN  | SPACE |L_CTL_H|R_ALT_E|  DEL  |L_ALT_I|        Pg_DOWN  Pg_UP
+ *                                 |  WIN  | SPACE |L_CTL_H|R_ALT_E|  DEL  |L_ALT_I|        Pg_DOWN  Pg_UP
  *                                 -------------------------------------------------
  */
 	[4] = LAYOUT_ortho_4x12(
         KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_PSCR,
-		KC_NO, KC_HOME, KC_END, KC_LGUI, KC_SPC, LCTL_T(KC_HOME), RALT_T(KC_END), KC_DEL, LALT_T(KC_INS), KC_PGUP, KC_PGDN, KC_NO
+		KC_NO, KC_NO, KC_NO, KC_LGUI, KC_SPC, LCTL_T(KC_HOME), RALT_T(KC_END), KC_DEL, LALT_T(KC_INS), KC_PGUP, KC_PGDN, KC_NO
 	),
 
 /*
@@ -118,14 +118,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * -------------------------------------------------               -------------------------------------------------
  * |       |M_BTN_5|M_BTN_4|M_BTN_3|M_BTN_2|M_BTN_1|               |       |  M_←  |  M_↓  |  M_↑  |  M_→  |       |
  * -----------------------------------------------------------------------------------------------------------------
- *                                 |       |       |       |       |       |       |
+ *           HOME     END          |       |       |       |       |       |       |
  *                                 -------------------------------------------------
  */
 	[5] = LAYOUT_ortho_4x12(
         KC_NO, KC_BTN5, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, KC_NO, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NO,
         KC_NO, KC_BTN5, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, KC_NO, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO,
         KC_NO, KC_BTN5, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, KC_NO, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+        KC_NO, KC_HOME, KC_END, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
 	),
 
 /*
@@ -137,14 +137,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * -------------------------------------------------               -------------------------------------------------
  * |       |       |       |       |       |       |               |       |       |       |       |       | Vol_0 |
  * -----------------------------------------------------------------------------------------------------------------
- *                                 |       |       |       |       |       |       |
+ *           HOME     END          |       |       |       |       |       |       |
  *                                 -------------------------------------------------
  */
 	[6] = LAYOUT_ortho_4x12(
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RESET, RESET, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLU,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLD,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MUTE,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+        KC_NO, KC_HOME, KC_END, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
 	)
 };
 
