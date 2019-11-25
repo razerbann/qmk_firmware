@@ -119,7 +119,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(5);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_RALT(SS_LSFT(SS_TAP(X_MINUS)))); // ]
+                    SEND_STRING(SS_RALT(SS_TAP(X_MINUS))); // ]
                 }
             }
             return false;
