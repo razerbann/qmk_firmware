@@ -35,7 +35,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 unregister_code(KC_LSFT);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_TAP(X_NONUS_BSLASH)); // <
+                    SEND_STRING("<"); // <
                 }
             }
             break;
@@ -47,7 +47,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 unregister_code(KC_RSFT);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_LSFT(SS_TAP(X_NONUS_BSLASH))); // >
+                    SEND_STRING(">"); // >
                 }
             }
             break;
@@ -59,7 +59,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(1);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_TAP(X_5)); // (
+                    SEND_STRING("("); // (
                 }
             }
             return false;
@@ -71,7 +71,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(2);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_TAP(X_MINUS)); // )
+                    SEND_STRING(")"); // )
                 }
             }
             return false;
@@ -83,7 +83,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(3);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_RALT(SS_TAP(X_4))); // {
+                    SEND_STRING("{"); // {
                 }
             }
             return false;
@@ -95,7 +95,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(6);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_RALT(SS_TAP(X_EQUAL)));  // }
+                    SEND_STRING("}");  // }
                 }
             }
             return false;
@@ -107,7 +107,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(4);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_RALT(SS_TAP(X_5))); // [
+                    SEND_STRING("["); // [
                 }
             }
             return false;
@@ -119,7 +119,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 layer_off(5);
                 if (timer_elapsed(key_timer) < TAPPING_TERM) {
-                    SEND_STRING(SS_RALT(SS_TAP(X_MINUS))); // ]
+                    SEND_STRING("]"); // ]
                 }
             }
             return false;
