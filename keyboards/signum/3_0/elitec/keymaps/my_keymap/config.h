@@ -19,10 +19,21 @@
 #define MOUSEKEY_WHEEL_TIME_TO_MAX  60
 #define MOUSEKEY_WHEEL_DELAY        100
 
-#undef TAPPING_TOGGLE
-#undef TAPPING_TERM
 #undef IGNORE_MOD_TAP_INTERRUPT
+#undef TAPPING_TERM
 
 #define TAPPING_TOGGLE  1
-#define TAPPING_TERM    150
+#define TAPPING_TERM 200
 #define IGNORE_MOD_TAP_INTERRUPT
+
+#define NO_MUSIC_MODE
+// Because the Macro and Function features are incompatible with Link Time Optimization, disable those features
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+#ifndef NO_DEBUG
+#define NO_DEBUG
+#endif // !NO_DEBUG
+#if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
+#define NO_PRINT
+#endif // !NO_PRINT
