@@ -31,6 +31,8 @@
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
 
+#define FORCE_NKRO // force NKRO on by default
+
 #ifndef NO_DEBUG
 #define NO_DEBUG
 #endif // !NO_DEBUG

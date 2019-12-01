@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "keymap_french.h"
-#include "send_string_keycodes.h"
 
 // A 'transparent' key code (that falls back to the layers below it).
 #define ___ KC_TRANSPARENT
@@ -38,8 +37,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     SEND_STRING("<"); // <
                 }
             }
-            break;
             return false;
+            break;
         case R_SFT_GRTR:
             if (record->event.pressed) {
                 key_timer = timer_read();
@@ -50,8 +49,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     SEND_STRING(">"); // >
                 }
             }
-            break;
             return false;
+            break;
         case L1_LPRN:
             if (record->event.pressed) {
                 key_timer = timer_read();
@@ -154,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Layer 1
  * -------------------------------------------------               -------------------------------------------------
- * |  ESC  |   &   |   é   |   "   |   '   |   ù   |               |   -   |   è   |   _   |   ç   |   à   |  BSP  |
+ * |  ESC  |   &   |   é   |   "   |   '   |       |               |   -   |   è   |   _   |   ç   |   à   |  BSP  |
  * -------------------------------------------------               -------------------------------------------------
  * |  TAB  |       |       |       |       |       |               |       |       |   °   |   =   |   +   | ENTER |
  * -------------------------------------------------               -------------------------------------------------
@@ -196,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * -------------------------------------------------               -------------------------------------------------
  * |  TAB  |       |       |       |       |       |               |       |   4   |   5   |   6   | Pg_UP | ENTER |
  * -------------------------------------------------               -------------------------------------------------
- * |L_SFT_<|       |       |       |       |       |               |   0   |   1   |   2   |   3   |Pg_DOWN|R_SFT_|
+ * |L_SFT_<|       |       |       |       |       |               |   0   |   1   |   2   |   3   |Pg_DOWN|R_SFT_>|
  * -----------------------------------------------------------------------------------------------------------------
  *                                 |  WIN  | SPACE |L_CTL_H|R_ALT_E|  DEL  |L_ALT_0|        Pg_DOWN  Pg_UP
  *                                 -------------------------------------------------
@@ -223,7 +222,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[4] = LAYOUT_ortho_4x12(
         KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_PSCR,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F5, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_PSCR,
 		KC_NO, KC_NO, KC_NO, KC_LGUI, KC_SPC, LCTL_T(KC_HOME), RALT_T(KC_END), KC_DEL, LALT_T(KC_INS), KC_PGUP, KC_PGDN, KC_NO
 	),
 
