@@ -25,7 +25,6 @@ extern keymap_config_t keymap_config;
 #define _ADJUST 3
 
 uint16_t key_timer;
-backlight_config_t backlight_config;
 
 enum custom_keycodes {
     LSFT_LESS = SAFE_RANGE,
@@ -51,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
        KC_TAB,  FR_A,    FR_Z,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_LCTL, FR_Q,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    FR_M,    KC_ENT,
+      LSFT_LESS,FR_Q,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    FR_M,    KC_ENT,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      LSFT_LESS,FR_W,    KC_X,    KC_C,    KC_V,    KC_B,    NUMBERS,          _FN,     KC_N,    FR_COMM, FR_SCLN, FR_COLN, FR_EXLM, RSFT_GRTR,
+       KC_LCTL, FR_W,    KC_X,    KC_C,    KC_V,    KC_B,    KC_END,           KC_HOME, KC_N,    FR_COMM, FR_SCLN, FR_COLN, FR_EXLM, RSFT_GRTR,
     //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                       KC_LGUI, KC_SPC,  NUMBERS,                   LALT_E,  FN,      RALT_I
                                   // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -63,11 +62,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
        _______, FR_1,    FR_2,    FR_3,    FR_4,    FR_5,                               FR_6,    FR_7,    FR_8,    FR_9,    FR_0,    KC_PSCR,
     //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            FR_DOT,  FR_4,    FR_5,    FR_6,    FR_DLR,  KC_DEL,
+       _______, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, XXXXXXX,                            FR_DOT,  FR_4,    FR_5,    FR_6,    FR_DLR,  KC_DEL,
     //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-       _______, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, XXXXXXX,                            FR_0,    FR_1,    FR_2,    FR_3,    FR_ASTR, _______,
+       _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,                            FR_0,    FR_1,    FR_2,    FR_3,    FR_ASTR, _______,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX,          FN,      FR_PLUS, FR_MINS, FR_SLSH, FR_EQL,  FR_PERC, _______,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,          BL_TOGG, FR_PLUS, FR_MINS, FR_SLSH, FR_EQL,  FR_PERC, _______,
     //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                       _______, _______, XXXXXXX,                   _______, FN,      _______
                                   // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -81,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
        RGB_MOD, KC_MPRV, KC_MNXT, KC_VOLU, KC_PGUP, XXXXXXX,                            XXXXXXX, KC_HOME, RGB_HUI, RGB_SAI, RGB_VAI, _______,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_MUTE, KC_MSTP, KC_MPLY, KC_VOLD, KC_PGDN, KC_F5,   NUMBERS,          XXXXXXX, KC_F11,  KC_END,  RGB_HUD, RGB_SAD, RGB_VAD, RESET,
+       KC_MUTE, KC_MSTP, KC_MPLY, KC_VOLD, KC_PGDN, KC_F5,   KC_MUTE,          BL_TOGG, KC_F11,  KC_END,  RGB_HUD, RGB_SAD, RGB_VAD, RESET,
     //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                       _______, _______, NUMBERS,                   _______, XXXXXXX, _______
                                   // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -168,36 +167,69 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 };
 
+#ifdef ENCODER_ENABLE
 void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
-        clockwise ? rgblight_increase_hue() : rgblight_decrease_hue();
+        switch (biton32(layer_state)) {
+            case _NUMBERS:
+                clockwise ? tap_code(KC_MS_WH_DOWN) : tap_code(KC_MS_WH_UP);
+                break;
+            case _FN:
+                clockwise ? tap_code(KC_AUDIO_VOL_DOWN) : tap_code(KC_AUDIO_VOL_UP);
+                break;
+            default:
+                clockwise ? tap_code(KC_LEFT) : tap_code(KC_RIGHT);
+                break;
+        }
     } else if (index == 1) {
-        clockwise ? tap_code(KC_MS_WH_UP) : tap_code(KC_MS_WH_DOWN);
+        switch (biton32(layer_state)) {
+            case _NUMBERS:
+                clockwise ? tap_code(KC_DOWN) : tap_code(KC_UP);
+                break;
+            case _FN:
+                clockwise ? tap_code(KC_PGDN) : tap_code(KC_PGUP);
+                break;
+            default:
+                clockwise ? tap_code(KC_MS_WH_DOWN) : tap_code(KC_MS_WH_UP);
+                break;
+        }
+    }
+}
+#endif  // ENCODER_ENABLE
+
+#ifdef TAP_DANCE_ENABLE
+// Tap Dance Declarations
+enum {
+    SFT_LCK = 0,
+};
+
+#define SFTLCK TD(SFT_LCK) // alias for tapdance
+
+// Shift vs. capslock function. From bbaserdem's Planck keymap.
+void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        register_code(LSFT_LESS);
+    } else if (state->count == 2) {
+        unregister_code(LSFT_LESS);
+        register_code(KC_CAPS);
+    }
+}
+void caps_tap_end (qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        unregister_code(LSFT_LESS);
+    } else {
+        unregister_code(KC_CAPS);
     }
 }
 
-// // Shift vs. capslock function. From bbaserdem's Planck keymap.
-// void caps_tap (qk_tap_dance_state_t *state, void *user_data) {
-//     if (state->count == 1) {
-//         register_code(LSFT_LESS);
-//     } else if (state->count == 2) {
-//         unregister_code(LSFT_LESS);
-//         register_code(KC_CAPS);
-//     }
-// }
-// void caps_tap_end (qk_tap_dance_state_t *state, void *user_data) {
-//     if (state->count == 1) {
-//         unregister_code(LSFT_LESS);
-//     } else {
-//         unregister_code(KC_CAPS);
-//     }
-// }
+// Tap dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED( caps_tap, NULL, caps_tap_end ), // Tap once for Shift, twice for Caps Lock
+};
+#endif  // TAP_DANCE_ENABLE
 
-// // Tap dance definitions
-// qk_tap_dance_action_t tap_dance_actions[] = {
-//     [SFT_LCK] = ACTION_TAP_DANCE_FN_ADVANCED( caps_tap, NULL, caps_tap_end ), // Tap once for Shift, twice for Caps Lock
-// };
-
+#ifdef RGBLIGHT_ENABLE
+backlight_config_t backlight_config;
 // Turn on RGB underglow according to active layer
 uint32_t layer_state_set_user(uint32_t state){
     switch(biton32(state)) {
@@ -241,3 +273,4 @@ void suspend_power_down_user(void){
 void suspend_wakeup_init_user(void){
     backlight_config.enable = true; // enable LED backlight
 }
+#endif  // RGBLIGHT_ENABLE
