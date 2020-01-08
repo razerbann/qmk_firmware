@@ -36,6 +36,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
 
+#undef BACKLIGHT_LEVELS
+#define BACKLIGHT_LEVELS 5
+
+#if defined(BACKLIGHT_BREATHING)
+#undef BACKLIGHT_BREATHING // Backlight breathing is not supported yet
+#endif // BACKLIGHT_BREATHING
+
 #define NO_MUSIC_MODE
 // Because the Macro and Function features are incompatible with Link Time Optimization, disable those features
 #define NO_ACTION_MACRO
@@ -44,6 +51,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef NO_DEBUG
 #define NO_DEBUG
 #endif // !NO_DEBUG
+
 #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
 #define NO_PRINT
 #endif // !NO_PRINT
