@@ -23,10 +23,10 @@ Log into the environment using 'vagrant ssh'.
 QMK directory synchronized with host is located at /qmk_firware
 To compile the .hex files use make command inside this directory, e.g.
    $ cd /qmk_firware
-   $ sudo make crkbd:my_keymap
+   $ sudo make crkbd/rev1:my_keymap
 To compule the .hex files and flash it into the Pro Micro
     $ cd /qmk_firware
-    $ sudo make crkbd:my_keymap:avrdude
+    $ sudo make crkbd/rev1:my_keymap:avrdude
 
 In order to stop the VM, you can run: `$ vagrant halt`
 If you want to delete the VM, you can run: `$ vagrant destroy -f`

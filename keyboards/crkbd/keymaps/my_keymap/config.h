@@ -21,26 +21,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 //#define USE_MATRIX_I2C
-
-/* Select hand configuration */
-
-#define MASTER_LEFT
-// #define MASTER_RIGHT
+//#define MASTER_LEFT
+#define MASTER_RIGHT
 // #define EE_HANDS
+
+#ifdef RGBLIGHT_ENABLE
+#undef RGBLED_NUM
+#define RGBLIGHT_ANIMATIONS
+#define RGBLED_NUM 27
+#define RGBLIGHT_LIMIT_VAL 120
+#define RGBLIGHT_HUE_STEP 10
+#define RGBLIGHT_SAT_STEP 17
+#define RGBLIGHT_VAL_STEP 17
+#undef RGBLED_SPLIT
+#define RGBLED_SPLIT { RGBLED_NUM, 0}
+#endif
+
+#define FORCE_NKRO // force NKRO on by default
 
 #define SSD1306OLED
 
 #define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 100
+#undef TAPPING_TERM
+#define TAPPING_TERM 200
 
-#ifdef RGBLIGHT_ENABLE
-    #undef RGBLED_NUM
-    #define RGBLIGHT_ANIMATIONS
-    #define RGBLED_NUM 27
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
-#endif
+#define NO_MUSIC_MODE
+// Because the Macro and Function features are incompatible with Link Time Optimization, disable those features
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
+#ifndef NO_DEBUG
+#define NO_DEBUG
+#endif // !NO_DEBUG
+
+#if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
+#define NO_PRINT
+#endif // !NO_PRINT
