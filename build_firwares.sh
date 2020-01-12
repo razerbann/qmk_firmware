@@ -49,4 +49,3 @@ if ! make keebio/quefrency/rev1:my_keymap
 then
   exit 4
 fi
-
