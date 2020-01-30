@@ -39,3 +39,14 @@ then
   exit 3
 fi
 
+# Build Quefrency rev1 firmware
+echo "############################################"
+echo "####   Build Quefrency rev1 firmware    ####"
+echo "############################################"
+rm -rf .build
+make clean
+if ! make keebio/quefrency/rev1:my_keymap
+then
+  exit 4
+fi
+
