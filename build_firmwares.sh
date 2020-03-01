@@ -49,3 +49,14 @@ if ! make keebio/quefrency/rev1:my_keymap
 then
   exit 4
 fi
+
+# Build Dactyl-Manuform firmware
+echo "#############################################"
+echo "####   Build Dactyl-Manuform firmware    ####"
+echo "#############################################"
+rm -rf .build
+make clean
+if ! make handwired/dactyl_manuform/5x6:my_keymap
+then
+  exit 5
+fi
