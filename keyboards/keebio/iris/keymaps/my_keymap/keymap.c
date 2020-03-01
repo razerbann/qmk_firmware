@@ -114,7 +114,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [RSFT_GRTR_TD]    = ACTION_TAP_DANCE_DOUBLE(KC_RSFT, FR_GRTR),                                               // Tap once for Shift, twice for greater
   [LPRN_CBR_BRC_TD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, left_parentheses_finished, left_parentheses_reset),   // Tap once for Shift, twice for greater
   [RPRN_CBR_BRC_TD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, right_parentheses_finished, right_parentheses_reset), // Tap once for Shift, twice for greater
-
 };
 
 // Aliases for tapdance
