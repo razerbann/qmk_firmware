@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 # Update master branch from qmk/qmk_firware base repository
 echo "############################################"
@@ -17,9 +17,9 @@ then
   exit 1
 fi
 
-# Build Iris rev4 firmware
+# Build Crkbd rev1 firmware
 echo "############################################"
-echo "####i     Build Iris rev4 firmware      ####"
+echo "####     Build Crkbd rev1 firmware      ####"
 echo "############################################"
 rm -rf .build
 make clean
@@ -28,9 +28,9 @@ then
   exit 2
 fi
 
-# Build Crkbd rev1 firmware
+# Build Iris rev4 firmware
 echo "############################################"
-echo "####      Build Crkbd rev1 firmware     ####"
+echo "####      Build Iris rev4 firmware      ####"
 echo "############################################"
 rm -rf .build
 make clean
