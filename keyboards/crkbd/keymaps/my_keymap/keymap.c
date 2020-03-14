@@ -1,14 +1,21 @@
 #include QMK_KEYBOARD_H
+#ifdef PROTOCOL_LUFA
+  #include "lufa.h"
+  #include "split_util.h"
+#endif
+#ifdef SSD1306OLED
+  #include "ssd1306.h"
+#endif
 #include "keymap_french.h"
 
-#ifdef SSD1306OLED
-extern uint8_t is_master;
-#endif // SSD1306OLED
+extern keymap_config_t keymap_config;
 
 #ifdef RGBLIGHT_ENABLE
 //Following line allows macro to read current RGB settings
 extern rgblight_config_t rgblight_config;
-#endif // RGBLIGHT_ENABLE
+#endif
+
+extern uint8_t is_master;
 
 // A 'transparent' key code (that falls back to the layers below it).
 #define _______ KC_TRNS
@@ -45,6 +52,17 @@ extern rgblight_config_t rgblight_config;
 #define X__RCBR   SS_ALGR("=") // }
 #define X__LBRC   SS_ALGR("5") // [
 #define X__RBRC   SS_ALGR("-") // ]
+
+#define KC_RST   RESET
+#define KC_LRST  RGBRST
+#define KC_LTOG  RGB_TOG
+#define KC_LHUI  RGB_HUI
+#define KC_LHUD  RGB_HUD
+#define KC_LSAI  RGB_SAI
+#define KC_LSAD  RGB_SAD
+#define KC_LVAI  RGB_VAI
+#define KC_LVAD  RGB_VAD
+#define KC_LMOD  RGB_MOD
 
 ///////////////////////////
 // TAP DANCE CONFIGURATION
@@ -170,23 +188,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 int RGB_current_mode;
 
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
-
 void matrix_init_user(void) {
-  #ifdef RGBLIGHT_ENABLE
-    RGB_current_mode = rgblight_config.mode;
-  #endif // RGBLIGHT_ENABLE
-
+    #ifdef RGBLIGHT_ENABLE
+      RGB_current_mode = rgblight_config.mode;
+    #endif
     //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
-  #ifdef SSD1306OLED
-    iota_gfx_init(!has_usb());   // turns on the display
-  #endif // SSD1306OLED
+    #ifdef SSD1306OLED
+        iota_gfx_init(!has_usb());   // turns on the display
+    #endif
 }
 
-#ifdef SSD1306OLED // SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
+//SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
+#ifdef SSD1306OLED
+
 // When add source files to SRC in rules.mk, you can use functions.
 const char *read_layer_state(void);
 const char *read_logo(void);
@@ -208,7 +222,7 @@ void matrix_render_user(struct CharacterMatrix *matrix) {
     // If you want to change the display of OLED, you need to change here
     matrix_write_ln(matrix, read_layer_state());
     matrix_write_ln(matrix, read_keylog());
-    //matrix_write_ln(matrix, read_keylogs());
+    matrix_write_ln(matrix, read_keylogs());
     //matrix_write_ln(matrix, read_mode_icon(keymap_config.swap_lalt_lgui));
     //matrix_write_ln(matrix, read_host_led_state());
     //matrix_write_ln(matrix, read_timelog());
@@ -230,13 +244,14 @@ void iota_gfx_task_user(void) {
   matrix_render_user(&matrix);
   matrix_update(&display, &matrix);
 }
-#endif //SSD1306OLED
+#endif//SSD1306OLED
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-    #ifdef SSD1306OLED
-      set_keylog(keycode, record);
-    #endif // SSD1306OLED
+#ifdef SSD1306OLED
+    set_keylog(keycode, record);
+#endif
+    // set_timelog();
   }
 
   switch (keycode) {
@@ -247,7 +262,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           rgblight_step();
           RGB_current_mode = rgblight_config.mode;
         }
-      #endif // RGBLIGHT_ENABLE
+      #endif
       return false;
     case RGBRST:
       #ifdef RGBLIGHT_ENABLE
@@ -256,7 +271,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           rgblight_enable();
           RGB_current_mode = rgblight_config.mode;
         }
-      #endif // RGBLIGHT_ENABLE
+      #endif
       break;
   }
   return true;
