@@ -1,4 +1,7 @@
-!/bin/bash
+#!/bin/bash
+
+git fetch origin
+git fetch upstream
 
 # Update master branch from qmk/qmk_firware base repository
 echo "############################################"
