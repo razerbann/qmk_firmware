@@ -1,27 +1,5 @@
 #!/bin/bash
 
-# Update master branch from qmk/qmk_firware base repository
-echo "############################################"
-echo "#### Updating code from base repository ####"
-echo "############################################"
-if ! git fetch origin 1>/dev/null;
-then
-  exit 1
-fi
-if ! git fetch upstream 1>/dev/null;
-then
-  exit 2
-fi
-if ! git rebase upstream/master 1>/dev/null;
-then
-  exit 1
-fi
-if ! git push origin master -f 1>/dev/null;
-then
-  exit 2
-fi
-echo
-
 # Build Signum 3.0 firmware
 echo "############################################"
 echo "####    Building Signum 3.0 firmware    ####"
