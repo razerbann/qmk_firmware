@@ -1,95 +1,106 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+#################################
+# Prerequisites
+#################################
+# You need to have installed Vagrant and have installed the following plugins:
+# - vagrant-cachier
+# - vagrant-hostmanager
+# - vagrant-share
+# - vagrant-vbguest
+# To install the plugins, you can run the following command:
+# $ vagrant plugin install vagrant-cachier vagrant-hostmanager vagrant-share vagrant-vbguest
+
+#################################
+# General project settings
+#################################
+
+# The project name is base for directories, hostname and alike
+project_name = "qmk"
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
 Vagrant.configure(2) do |config|
-  # define a name instead of just 'default'
-  config.vm.define "qmk_firmware"
 
-  # VMware/Virtualbox ( and also Hyperv/Parallels) 64 bit
-  config.vm.box = "generic/debian9"
-  
-  config.vm.synced_folder '.', '/vagrant'
+    # The most common configuration options are documented and commented below.
+    # For a complete reference, please see the online documentation at
+    # https://docs.vagrantup.com.
+    config.vbguest.auto_update = false
+    # Disable default syncing
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+    # Always use Vagrants insecure key
+    config.ssh.insert_key = false
 
-  # This section allows you to customize the Virtualbox VM
-  # settings, ie showing the GUI or upping the memory
-  # or cores if desired
-  config.vm.provider "virtualbox" do |vb|
-    # Hide the VirtualBox GUI when booting the machine
-    vb.gui = false
-    # Uncomment the below lines if you want to program
-    # your Teensy via the VM rather than your host OS
-    #vb.customize ['modifyvm', :id, '--usb', 'on']
-    #vb.customize ['usbfilter', 'add', '0',
-    #         '--target', :id,
-    #         '--name', 'teensy',
-    #         '--vendorid', '0x16c0',
-    #         '--productid','0x0478'
-    #        ]
-    # Customize the amount of memory on the VM:
-    vb.memory = "512"
-    # Uncomment the below lines if you have time sync
-    # issues with make and incremental builds
-    #vb.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 1000 ]
-  end
+    config.vm.define project_name do |machine|
+        # Every Vagrant development environment requires a box. You can search for
+        # boxes at https://atlas.hashicorp.com/search.
+        machine.vm.box = "geerlingguy/debian10"
 
-  # This section allows you to customize the VMware VM
-  # settings, ie showing the GUI or upping the memory
-  # or cores if desired
-  config.vm.provider "vmware_workstation" do |vmw|
-    # Hide the VMware GUI when booting the machine
-    vmw.gui = false
+        # Share an additional folder to the guest VM. The first argument is
+        # the path on the host to the actual folder. The second argument is
+        # the path on the guest to mount the folder. And the optional third
+        # argument is a set of non-required options.
+        machine.vm.synced_folder "./" , "/qmk_firmware",
+            id: project_name,
+            mount_options: ["dmode=755", "fmode=755"]
 
-    # Customize the amount of memory on the VM:
-    vmw.memory = "512"
-  end
+        # Vagrant VM hostname
+        machine.vm.hostname = project_name
 
-  config.vm.provider "vmware_fusion" do |vmf|
-    # Hide the vmfare GUI when booting the machine
-    vmf.gui = false
+        # Provider-specific configuration so you can fine-tune various
+        # backing providers for Vagrant. These expose provider-specific options.
+        # Example for VirtualBox:
+        machine.vm.provider "virtualbox" do |vb|
+            # Customize the VM name
+            vb.name = "VM to flash QMK firmware into ProMicro"
+            # Display the VirtualBox GUI when booting the machine
+            vb.gui = false
+            # Customize the amount of memory on the VM:
+            vb.memory = "256"
+            # Customize the number of cpus on the VM:
+            vb.cpus = 1
 
-    # Customize the amount of memory on the VM:
-    vmf.memory = "512"
-  end
+            vb.customize ["modifyvm", :id, "--usb", "on"]
+            vb.customize ["modifyvm", :id, "--usbehci", "on"]
+            # Please rewrite according to your environment. VID/PID is required.
+            vb.customize ["usbfilter", "add", "0",
+                         "--target", :id,
+                         "--name", "Arduino Micro (writable)",
+                         "--vendorid", "2341",
+                         "--productid", "0036",
+                         "--remote", "no"]
+            vb.customize ["usbfilter", "add", "1",
+                         "--target", :id,
+                         "--name", "Arduino Micro",
+                         "--vendorid", "2341",
+                         "--productid", "8036",
+                         "--remote", "no"]
+        end
 
-  # Docker provider pulls from hub.docker.com respecting docker.image if
-  # config.vm.box is nil. In this case, we adhoc build util/vagrant/Dockerfile.
-  # Note that this bind-mounts from the current dir to
-  # /vagrant in the guest, so unless your UID is 1000 to match vagrant in the
-  # image, you'll need to: chmod -R a+rw .
-  config.vm.provider "docker" do |docker, override|
-    override.vm.box = nil
-    docker.build_dir = "util/vagrant"
-    docker.has_ssh = true
-  end
-
-  # Unless we are running the docker container directly
-  #   1. run container detached on vm
-  #   2. attach on 'vagrant ssh'
-  ["virtualbox", "vmware_workstation", "vmware_fusion"].each do |type|
-    config.vm.provider type do |virt, override|
-      override.vm.provision "docker" do |d|
-        d.run "qmkfm/base_container",
-          cmd: "tail -f /dev/null",
-          args: "--privileged -v /dev:/dev -v '/vagrant:/vagrant'"
-      end
-
-      override.vm.provision "shell", inline: <<-SHELL
-        echo 'docker restart qmkfm-base_container && exec docker exec -it qmkfm-base_container /bin/bash -l' >> ~vagrant/.bashrc
-      SHELL
+        # Install build tools
+        machine.vm.provision "shell", privileged: false, inline: <<-SHELL
+        echo 'export PATH=/home/vagrant/.local/bin:${PATH}' >> /home/vagrant/.bashrc
+        source /home/vagrant/.bashrc
+        sudo apt-get update
+        sudo apt-get -y install python3-pip avrdude
+        chmod +x /qmk_firmware/util/qmk_install.sh
+        /qmk_firmware/util/qmk_install.sh
+        SHELL
     end
+
+    config.vm.post_up_message = <<-EOT
+Log into the environment using 'vagrant ssh'. QMK directory synchronized with
+host is located at /qmk_firmware
+To compile the .hex files use make command inside this directory, e.g.
+    $ cd /qmk_firmware
+    $ sudo make handwired/dactyl_manuform/5x6:my_keymap
+    $ sudo make crkbd/rev1:my_keymap
+To compule the .hex files and flash it into the Pro Micro
+    $ cd /qmk_firmware
+    $ sudo make handwired/dactyl_manuform/5x6:my_keymap:avrdude
+    $ sudo make crkbd/rev1:my_keymap:avrdude
+EOT
   end
-
-  config.vm.post_up_message = <<-EOT
-
-  Log into the environment using 'vagrant ssh'. QMK directory synchronized with
-  host is located at /vagrant
-  To compile the .hex files use make command inside this directory, e.g.
-     cd /vagrant
-     make <keyboard>:default
-
-  Examples:
-     make planck/rev4:default:dfu
-     make planck/rev4:default
-
-  EOT
-end
