@@ -5,13 +5,13 @@ echo "############################################"
 echo "####    Building Signum 3.0 firmware    ####"
 echo "############################################"
 make clean >/dev/null 2>&1
-echo "#         Building custom firware          #"
+echo "#         Building custom firmware         #"
 if ! make signum/3_0/elitec:my_keymap 1>/dev/null;
 then
   exit 1
 fi
 make clean >/dev/null 2>&1
-echo "#         Building default firware         #"
+echo "#         Building default firmware        #"
 if ! make signum/3_0/elitec:default 1>/dev/null;
 then
   exit 1
@@ -23,13 +23,13 @@ echo "############################################"
 echo "####     Build Crkbd rev1 firmware      ####"
 echo "############################################"
 make clean >/dev/null 2>&1
-echo "#         Building custom firware          #"
+echo "#         Building custom firmware         #"
 if ! make crkbd/rev1:my_keymap 1>/dev/null;
 then
   exit 2
 fi
 make clean >/dev/null 2>&1
-echo "#         Building default firware         #"
+echo "#         Building default firmware        #"
 if ! make crkbd/rev1:default 1>/dev/null;
 then
   exit 2
@@ -41,13 +41,13 @@ echo "############################################"
 echo "####      Build Iris rev4 firmware      ####"
 echo "############################################"
 make clean >/dev/null 2>&1
-echo "#         Building custom firware          #"
+echo "#         Building custom firmware         #"
 if ! make keebio/iris/rev4:my_keymap 1>/dev/null;
 then
   exit 3
 fi
 make clean >/dev/null 2>&1
-echo "#         Building default firware         #"
+echo "#         Building default firmware        #"
 if ! make keebio/iris/rev4:default 1>/dev/null;
 then
   exit 3
@@ -59,13 +59,13 @@ echo "############################################"
 echo "#      Build Quefrency rev1 firmware       #"
 echo "############################################"
 make clean >/dev/null 2>&1
-echo "#         Building custom firware          #"
+echo "#         Building custom firmware         #"
 if ! make keebio/quefrency/rev1:my_keymap 1>/dev/null;
 then
   exit 4
 fi
 make clean >/dev/null 2>&1
-echo "#         Building default firware         #"
+echo "#         Building default firmware        #"
 if ! make keebio/quefrency/rev1:default 1>/dev/null;
 then
   exit 4
@@ -77,13 +77,13 @@ echo "############################################"
 echo "####   Build Dactyl-Manuform firmware   ####"
 echo "############################################"
 make clean >/dev/null 2>&1
-echo "#          Building custom firware         #"
+echo "#         Building custom firmware         #"
 if ! make handwired/dactyl_manuform/5x6:my_keymap 1>/dev/null;
 then
   exit 5
 fi
 make clean >/dev/null 2>&1
-echo "#          Building default firware        #"
+echo "#         Building default firmware        #"
 echo "############################################"
 if ! make handwired/dactyl_manuform/5x6:default 1>/dev/null;
 then
