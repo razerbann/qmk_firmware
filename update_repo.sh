@@ -29,7 +29,7 @@ fi
 echo "############################################"
 echo "####   Push the code to origin/master   ####"
 echo "############################################"
-if ! git push origin master -f 1>/dev/null;
+if ! git push origin master -f --tags 1>/dev/null;
 then
   exit 2
 fi
