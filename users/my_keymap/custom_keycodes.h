@@ -26,6 +26,9 @@ enum custom_keycodes {
 
 // Defines the keycodes for Tap Dance
 enum tap_dance {
-    TD_LALT_RALT,
-    TD_LCTRL_ESC,
+    LALT_RALT,
+    LCTRL_ESC,
 };
+
+#define TD_LALT_RALT TD(LALT_RALT)
+#define TD_LCTRL_ESC TD(LCTRL_ESC)
