@@ -1,17 +1,10 @@
+#include "quantum.h"
 #include "custom_keycodes.h"
 
 bool is_alt_tab_active = false;
 bool is_cmd_tab_active = false;
 uint16_t alt_tab_timer = 0;
 uint16_t cmd_tab_timer = 0;
-
-// Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for Alt, twice for Alt Gr
-    [LALT_RALT] = ACTION_TAP_DANCE_DOUBLE(KC_LALT, KC_RALT),
-    // Tap once for Ctrl, twice for ESC
-    [LCTRL_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_LCTRL, KC_ESC),
-};
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {

@@ -1,16 +1,5 @@
 #pragma once
 
-#include "quantum.h"
-
-// Defines names for use in layer keycodes and the keymap
-enum layer_names {
-    _BASE,
-    _WIN = _BASE,
-    _MAC,
-    _FN,
-    _FN2
-};
-
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
     PREV_TAB = SAFE_RANGE,
@@ -23,12 +12,3 @@ enum custom_keycodes {
     PREV_WINDOW_MAC,
     NEXT_WINDOW_MAC
 };
-
-// Defines the keycodes for Tap Dance
-enum tap_dance {
-    LALT_RALT,
-    LCTRL_ESC,
-};
-
-#define TD_LALT_RALT TD(LALT_RALT)
-#define TD_LCTRL_ESC TD(LCTRL_ESC)

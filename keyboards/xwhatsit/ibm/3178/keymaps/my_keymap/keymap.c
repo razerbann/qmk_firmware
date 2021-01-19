@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
+#include "layer_names.h"
 #include "custom_keycodes.h"
+#include "tap_dance.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
