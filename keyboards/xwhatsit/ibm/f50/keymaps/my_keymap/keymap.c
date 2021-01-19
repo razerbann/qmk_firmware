@@ -1,14 +1,7 @@
 #include QMK_KEYBOARD_H
-
-// Defines names for use in layer keycodes and the keymap
-enum layer_names {
-    _BASE,
-    _FN,
-    _FN2
-};
+#include "custom_keycodes.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Base */
     [_BASE] = LAYOUT(
         KC_ESC,   KC_PSLS, KC_PAST,    KC_MINS, KC_EQL,   KC_DEL,     KC_PSCR, KC_COMM, KC_DOT,  KC_BSPC,
         KC_Q,     KC_W,    KC_E,       KC_R,    KC_T,     KC_Y,       KC_U,    KC_I,    KC_O,    KC_P,
