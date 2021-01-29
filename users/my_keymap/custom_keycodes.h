@@ -1,5 +1,7 @@
 #pragma once
 
+#define ESC_CTRL LCTL_T(KC_ESC)
+
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
     PREV_TAB = SAFE_RANGE,
