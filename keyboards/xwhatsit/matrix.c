@@ -653,6 +653,28 @@ void set_leds(int num_lock, int caps_lock, int scroll_lock)
     #endif
 }
 
+#if defined(LED_NON_BASE_LAYER_PIN)
+void set_led_non_base_layer(uint8_t value) {
+    #if defined(LED_NON_BASE_LAYER_ACTIVE_LOW)
+        writePin(LED_NON_BASE_LAYER_PIN, !value);
+    #else
+        writePin(LED_NON_BASE_LAYER_PIN, !!value);
+    #endif
+}
+
+layer_state_t layer_state_set_kb(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case 0:
+            set_led_non_base_layer(0);
+            break;
+        default:
+            set_led_non_base_layer(1);
+            break;
+    }
+     return layer_state_set_user(state);
+}
+#endif
+
 void real_keyboard_init_basic(void)
 {
     SETUP_UNUSED_PINS();
@@ -665,6 +687,10 @@ void real_keyboard_init_basic(void)
     #endif
     #if defined(LED_SCROLL_LOCK_PIN)
         setPinOutput(LED_SCROLL_LOCK_PIN);
+    #endif
+    #if defined(LED_NON_BASE_LAYER_PIN)
+        setPinOutput(LED_NON_BASE_LAYER_PIN);
+        set_led_non_base_layer(0);
     #endif
     set_leds(0, 0, 0);
 
