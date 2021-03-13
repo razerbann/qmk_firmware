@@ -7,3 +7,5 @@ util_plugin_import.cpp
 release
 Makefile
 Makefile.*
+util.app/
+util.dmg

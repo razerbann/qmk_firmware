@@ -50,7 +50,7 @@ This has not been tested yet. You may need to tweak util.pro for this to work. I
 1) Install Homebrew, see http://brew.sh
 2) ```brew install qt5```
 3) ```brew install hidapi```
-4) Probably Optional (but haven't tried without yet): ```brew cask install qt-creator```
+4) Probably Optional (but haven't tried without yet): ```brew install qt-creator```
 5) Change directory to where util.pro lives.
 6) ```/usr/local/opt/qt5/bin/qmake util.pro```
 7) ```make```
