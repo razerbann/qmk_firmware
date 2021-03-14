@@ -42,21 +42,21 @@
 )
 
 #define LAYOUT_all( \
-    k_esc, k_1, k_2, k_3, k_4, k_5, k_6, k_7, k_8, k_9, k_0, k_minus, k_equals, k_backslash, k_backtick,     \
-    k_tab,   k_q, k_w, k_e, k_r, k_t, k_y, k_u, k_i, k_o, k_p, k_squarebrop, k_squarebrcl,k_backspace,       \
-    k_lctrl,   k_a, k_s, k_d, k_f, k_g, k_h, k_j, k_k, k_l, k_semicolon, k_singlequote, k_hashtag, k_return, \
-    k_lshift, k_nonusbs, k_z, k_x, k_c, k_v, k_b, k_n, k_m, k_cm,k_period, k_forwardslash, k_rshift, k_fn,   \
-    k_caps, k_lgui, k_lalt,         k_space,                                  k_ralt, k_numlock, k_rctrl     \
+    k_2_1_esc, k_1_1_1, k_1_2_2, k_2_3_3, k_1_3_4, k_2_4_5, k_1_4_6, k_2_5_7, k_1_5_8, k_2_6_9, k_1_6_0, k_2_7_minus, k_1_7_equals, k_2_8_backslash, k_1_8_backtick,     \
+    k_3_1_tab,   k_2_2_q, k_3_2_w, k_4_3_e, k_3_3_r, k_4_4_t, k_3_4_y, k_4_5_u, k_3_5_i, k_4_6_o, k_3_6_p, k_3_7_squarebrop, k_3_8_squarebrcl,k_4_8_backspace,       \
+    k_4_1_lctrl,   k_4_2_a, k_5_2_s, k_6_3_d, k_5_3_f, k_6_4_g, k_5_4_h, k_5_5_j, k_6_5_k, k_6_6_l, k_5_6_semicolon, k_5_7_singlequote, k_4_7_hashtag, k_5_8_return, \
+    k_5_1_lshift, k_6_1_nonusbs, k_7_2_z, k_6_2_x, k_7_3_c, k_8_3_v, k_7_4_b, k_7_5_n, k_8_5_m, k_8_6_cm,k_7_6_period, k_6_7_forwardslash, k_6_8_rshift, k_7_8_fn,   \
+    k_8_1_caps, k_7_1_lgui, k_8_2_lalt,         k_8_4_space,                                  k_8_7_ralt, k_7_7_numlock, k_8_8_rctrl     \
 ) \
 { \
-    { k_1,      k_2,    k_4, k_6,     k_8, k_0,         k_equals,       k_backtick   },\
-    { k_esc,    k_q,    k_3, k_5,     k_7, k_9,         k_minus,        k_backslash  },\
-    { k_tab,    k_w,    k_r, k_y,     k_i, k_p,         k_squarebrop,   k_squarebrcl },\
-    { k_lctrl,  k_a,    k_e, k_t,     k_u, k_o,         k_hashtag,      k_backspace  },\
-    { k_nonusbs,k_x,    k_d, k_g,     k_k, k_l,         k_forwardslash, k_rshift     },\
-    { k_lshift, k_s,    k_f, k_h,     k_j, k_semicolon, k_singlequote,  k_return     },\
-    { k_lgui,   k_z,    k_c, k_b,     k_n, k_period,    k_numlock,      k_fn         },\
-    { k_caps,   k_lalt, k_v, k_space, k_m, k_cm,        k_ralt,         k_rctrl      }\
+    { k_1_1_1,      k_1_2_2,    k_1_3_4, k_1_4_6,     k_1_5_8, k_1_6_0,         k_1_7_equals,       k_1_8_backtick   },\
+    { k_2_1_esc,    k_2_2_q,    k_2_3_3, k_2_4_5,     k_2_5_7, k_2_6_9,         k_2_7_minus,        k_2_8_backslash  },\
+    { k_3_1_tab,    k_3_2_w,    k_3_3_r, k_3_4_y,     k_3_5_i, k_3_6_p,         k_3_7_squarebrop,   k_3_8_squarebrcl },\
+    { k_4_1_lctrl,  k_4_2_a,    k_4_3_e, k_4_4_t,     k_4_5_u, k_4_6_o,         k_4_7_hashtag,      k_4_8_backspace  },\
+    { k_5_1_lshift, k_5_2_s,    k_5_3_f, k_5_4_h,     k_5_5_j, k_5_6_semicolon, k_5_7_singlequote,  k_5_8_return     },\
+    { k_6_1_nonusbs,k_6_2_x,    k_6_3_d, k_6_4_g,     k_6_5_k, k_6_6_l,         k_6_7_forwardslash, k_6_8_rshift     },\
+    { k_7_1_lgui,   k_7_2_z,    k_7_3_c, k_7_4_b,     k_7_5_n, k_7_6_period,    k_7_7_numlock,      k_7_8_fn         },\
+    { k_8_1_caps,   k_8_2_lalt, k_8_3_v, k_8_4_space, k_8_5_m, k_8_6_cm,        k_8_7_ralt,         k_8_8_rctrl      }\
 }
 
 #define LAYOUT_ansi_regular_shift_regular_backspace( \
