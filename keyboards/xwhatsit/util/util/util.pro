@@ -69,8 +69,8 @@ unix:!macx {
 }
 
 macx {
-    INCLUDEPATH += /usr/local/Cellar/hidapi/0.10.1/include/hidapi
-    LIBS += -L/usr/local/Cellar/hidapi/0.10.1/lib -lhidapi
+    INCLUDEPATH += /usr/local/opt/hidapi/include/hidapi
+    LIBS += -L/usr/local/opt/hidapi/lib -lhidapi
 }
 
 win32 {
