@@ -16,6 +16,9 @@
  */
 
 #include "power.h"
+#if defined(HAPTIC_ENABLE)
+#    include "haptic.h"
+#endif
 
 enum power_state power_state;
 
@@ -24,6 +27,9 @@ __attribute__((weak)) void notify_power_state_change_kb(void) {
 
 static void notify_power_state_change(void)
 {
+#if defined(HAPTIC_ENABLE) && HAPTIC_OFF_IN_LOW_POWER
+    haptic_notify_power_state_change();
+#endif
     notify_power_state_change_kb();
 }
 
