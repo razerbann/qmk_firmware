@@ -40,6 +40,7 @@ struct kbd_def
     const struct lay_def *layouts;
     unsigned int cols;
     unsigned int rows;
+    unsigned int extra_direct_rows;
 };
 
 extern struct kbd_def keyboards[];

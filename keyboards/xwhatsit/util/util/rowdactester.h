@@ -53,7 +53,7 @@ private slots:
 
     void on_reportMonitorError(std::string error_message);
 
-    void on_reportRowsAndMaxDac(uint8_t rows, uint16_t max_dac);
+    void on_reportRowsAndMaxDac(uint8_t rows, uint16_t max_dac, uint8_t capsense_rows);
 
 private:
     Ui::RowDacTester *ui;

@@ -156,9 +156,10 @@ void RowDacTester::on_RowDacTester_finished(int result)
     thread.closeMonitoredDevice();
 }
 
-void RowDacTester::on_reportRowsAndMaxDac(uint8_t rows, uint16_t max_dac)
+void RowDacTester::on_reportRowsAndMaxDac(uint8_t rows, uint16_t max_dac, uint8_t capsense_rows)
 {
-    this->rows = rows;
+    (void)rows; // unused
+    this->rows = capsense_rows;
     this->max_dac = max_dac;
     this->ui->spinBox->setMaximum(max_dac);
     this->ui->horizontalSlider->setMaximum(max_dac);

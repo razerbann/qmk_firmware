@@ -148,7 +148,7 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
                         col -= MATRIX_COLS;
                         row += 1;
                     }
-                    if (row >= MATRIX_ROWS)
+                    if (row >= MATRIX_CAPSENSE_ROWS)
                     {
                         break;
                     }
@@ -177,6 +177,10 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
                 response[9] = CAPSENSE_CAL_ENABLED;
                 response[10] = CAPSENSE_DAC_MAX & 0xFF;
                 response[11] = (CAPSENSE_DAC_MAX >> 8) & 0xFF;
+                response[12] = MATRIX_CAPSENSE_ROWS;
+                response[13] = 0; // reserved for future
+                response[14] = 0; // reserved for future
+                response[15] = 0; // reserved for future
                 break;
             }
         case UTIL_COMM_SHIFT_DATA:

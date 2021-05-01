@@ -76,9 +76,9 @@ void SignalLevelMonitorWindow::loadLayout(QString name)
         if (name.compare(QString(keyboards[i].kbd_name))==0)
         {
             keyboard = &keyboards[i];
-            this->signal_level = std::vector<std::vector<uint16_t>>(static_cast<unsigned long>(keyboard->rows), std::vector<uint16_t>(static_cast<unsigned long>(keyboard->cols), 0xFFFFU));
-            this->max_signal_level = std::vector<std::vector<uint16_t>>(static_cast<unsigned long>(keyboard->rows), std::vector<uint16_t>(static_cast<unsigned long>(keyboard->cols), 0xFFFFU));
-            this->min_signal_level = std::vector<std::vector<uint16_t>>(static_cast<unsigned long>(keyboard->rows), std::vector<uint16_t>(static_cast<unsigned long>(keyboard->cols), 0xFFFFU));
+            this->signal_level = std::vector<std::vector<uint16_t>>(static_cast<unsigned long>(keyboard->rows-keyboard->extra_direct_rows), std::vector<uint16_t>(static_cast<unsigned long>(keyboard->cols), 0xFFFFU));
+            this->max_signal_level = std::vector<std::vector<uint16_t>>(static_cast<unsigned long>(keyboard->rows-keyboard->extra_direct_rows), std::vector<uint16_t>(static_cast<unsigned long>(keyboard->cols), 0xFFFFU));
+            this->min_signal_level = std::vector<std::vector<uint16_t>>(static_cast<unsigned long>(keyboard->rows-keyboard->extra_direct_rows), std::vector<uint16_t>(static_cast<unsigned long>(keyboard->cols), 0xFFFFU));
             int j;
             for (j=0;j<keyboard->n_layouts;j++)
             {
@@ -201,6 +201,8 @@ void SignalLevelMonitorWindow::paintEvent(QPaintEvent *event)
         {
             const unsigned int col = layout->keys[j].col;
             const unsigned int row = layout->keys[j].row;
+            if (row >= (keyboard->rows-keyboard->extra_direct_rows))
+                break;
             if (signal_level.at(row).at(col)!=0xffffu)
             {
                 if ((mins == 0xffffu) || (mins > min_signal_level.at(row).at(col)))
@@ -227,14 +229,16 @@ void SignalLevelMonitorWindow::paintEvent(QPaintEvent *event)
             const int h = static_cast<int>(scale_y * (y_ + h_) / 8 + 0.5) - y__;
             const int x = x__ + xadd;
             const int y = y__ + yadd;
-            displaySquare(x, y, w, h, col, row, mins, maxs, painter);
+            if (row < (keyboard->rows-keyboard->extra_direct_rows)) {
+                displaySquare(x, y, w, h, col, row, mins, maxs, painter);
+            }
         }
     } else {
         unsigned int col, row;
         double scale_x = (1. * this->width() - 2 * HORIZONTAL_MARGIN) / keyboard->cols;
-        double scale_y = (1. * this->height() - VERTICAL_MARGIN - yadd) / keyboard->rows;
+        double scale_y = (1. * this->height() - VERTICAL_MARGIN - yadd) / (keyboard->rows-keyboard->extra_direct_rows);
         uint16_t mins = 0xffffu, maxs = 0xffffu;
-        for (row = 0; row < keyboard->rows; row++)
+        for (row = 0; row < (keyboard->rows-keyboard->extra_direct_rows); row++)
         {
             for (col = 0; col < keyboard->cols; col++)
             {
@@ -251,7 +255,7 @@ void SignalLevelMonitorWindow::paintEvent(QPaintEvent *event)
                 }
             }
         }
-        for (row = 0; row < keyboard->rows; row++)
+        for (row = 0; row < (keyboard->rows-keyboard->extra_direct_rows); row++)
         {
             for (col = 0; col < keyboard->cols; col++)
             {
@@ -275,7 +279,7 @@ void SignalLevelMonitorWindow::on_layoutSel_activated(const QString &arg1)
     {
         setMinimumSizeUnits(this->keyboard_width_uis_times_8, this->keyboard_height_uis_times_8);
     } else {
-        setMinimumSizeUnits(this->keyboard->cols * 8, this->keyboard->rows * 8);
+        setMinimumSizeUnits(this->keyboard->cols * 8, (keyboard->rows-keyboard->extra_direct_rows) * 8);
     }
     this->repaint();
 }
@@ -317,7 +321,7 @@ void SignalLevelMonitorWindow::on_signallevel(std::vector<uint16_t> data)
             col -= keyboard->cols;
             row += 1;
         }
-        if (row >= keyboard->rows)
+        if (row >= (keyboard->rows-keyboard->extra_direct_rows))
         {
             break;
         }

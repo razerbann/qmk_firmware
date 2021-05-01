@@ -21,6 +21,11 @@ def handle_layouts(layouth_fn, layoutc_fn, infojson_fn, config_fn):
     config = open(config_fn, "r").read()
     cols = int(re.findall(r"#define\s+MATRIX_COLS\s+([0-9]+)\n", config)[0])
     rows = int(re.findall(r"#define\s+MATRIX_ROWS\s+([0-9]+)\n", config)[0])
+    extra_direct_rows_l_str = re.findall(r"#define\s+MATRIX_EXTRA_DIRECT_ROWS\s+([0-9]+)\n", config)
+    if extra_direct_rows_l_str:
+        extra_direct_rows = int(extra_direct_rows_l_str[0])
+    else:
+        extra_direct_rows = 0
 
     f = open(infojson_fn, "r")
     js = json.loads(f.read())['layouts']
@@ -88,7 +93,7 @@ def handle_layouts(layouth_fn, layoutc_fn, infojson_fn, config_fn):
         print("        .keys = " + layname + "_keys,")
         print("    },")
     print("};")
-    return keybname, cols, rows
+    return keybname, cols, rows, extra_direct_rows
 
 
 def find_layouts(starting_dir):
@@ -104,16 +109,17 @@ def find_layouts(starting_dir):
                     infojson_fn = os.path.join(spl2[0], "info.json")
                     config_fn = os.path.join(spl1[0], "config.h")
                     layoutc_fn = "keyboards/xwhatsit" + layouth_fn[len(starting_dir):-2] + ".c"
-                    keybname, cols, rows = handle_layouts(layouth_fn, layoutc_fn, infojson_fn, config_fn)
-                    keebs.append((keybname, layoutc_fn, cols, rows))
+                    keybname, cols, rows, extra_direct_rows = handle_layouts(layouth_fn, layoutc_fn, infojson_fn, config_fn)
+                    keebs.append((keybname, layoutc_fn, cols, rows, extra_direct_rows))
     print("struct kbd_def keyboards[] = {")
-    for keybname, layoutc_fn, cols, rows in sorted(keebs):
+    for keybname, layoutc_fn, cols, rows, extra_direct_rows in sorted(keebs):
         print("    {")
         print("        .kbd_name = \"" + layoutc_fn + "\",")
         print("        .n_layouts = sizeof(" + keybname + "_lays)/sizeof(" + keybname + "_lays[0]),")
         print("        .layouts = " + keybname + "_lays,")
         print("        .cols = %d," % (cols,))
         print("        .rows = %d," % (rows,))
+        print("        .extra_direct_rows = %d," % (extra_direct_rows,))
         print("    },")
     print("};")
     print("int n_keyboards = sizeof(keyboards)/sizeof(keyboards[0]);")

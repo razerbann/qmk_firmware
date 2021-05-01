@@ -54,7 +54,7 @@ signals:
     void rowstate(uint8_t);
     void reportMonitorError(std::string error_message);
     void reportSignalLevel(std::vector<uint16_t>);
-    void reportRowsAndMaxDac(uint8_t rows, uint16_t max_dac);
+    void reportRowsAndMaxDac(uint8_t rows, uint16_t max_dac, uint8_t capsense_rows);
     void reportControlReadback(std::vector<uint8_t>);
 
 protected:

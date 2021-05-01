@@ -58,7 +58,7 @@ private:
     std::vector<std::vector<uint8_t>> thresholds;
     uint16_t get_threshold(unsigned int col, unsigned int row);
     void updateCurrentLayout();
-    void displaySquare(int x, int y, int w, int h, unsigned int col, unsigned int row, QPainter &painter);
+    void displaySquare(int x, int y, int w, int h, unsigned int col, unsigned int row, QPainter &painter, bool has_threshold);
     void setMinimumSizeUnits(unsigned int width_units_times_8, unsigned int height_units_times_8);
     std::vector<std::vector<int>> is_was_key_pressed;
 

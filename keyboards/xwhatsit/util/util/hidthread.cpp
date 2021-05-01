@@ -159,7 +159,7 @@ void HidThread::run()
     Device *monitoredDevice = nullptr;
     Device *monitoredRowStateDevice = nullptr;
     Device *signalLevelDevice = nullptr;
-    uint8_t cols=0, rows=0, current_col=0, current_row=0;
+    uint8_t cols=0, rows=0, capsense_rows = 0, current_col=0, current_row=0;
     forever {
         mutex.lock();
         bool l_keep_scanning, l_abort, nothing_to_do, l_autoenter_mode, l_close_monitored_device, l_set_dac;
@@ -285,7 +285,11 @@ void HidThread::run()
                 std::vector<uint8_t> details = dev.data()->getKeyboardDetails();
                 uint8_t rows = details[1];
                 uint16_t max_dac = (details[7] | static_cast<uint16_t>((static_cast<uint16_t>(details[8]) << 8)));
-                emit reportRowsAndMaxDac(rows, max_dac);
+                uint8_t capsense_rows = rows;
+                if (dev.data()->isVersionAtLeast(2, 0, 5)) {
+                    capsense_rows = details[9];
+                }
+                emit reportRowsAndMaxDac(rows, max_dac, capsense_rows);
                 dev.data()->disableKeyboard();
                 monitoredRowStateDevice = dev.take();
             } catch (const std::runtime_error &e1) {
@@ -323,6 +327,10 @@ void HidThread::run()
                 std::vector<uint8_t> details = dev.data()->getKeyboardDetails();
                 cols = details[0];
                 rows = details[1];
+                capsense_rows = rows;
+                if (dev.data()->isVersionAtLeast(2, 0, 5)) {
+                    capsense_rows = details[9];
+                }
                 current_col = current_row = 0;
                 signalLevelDevice = dev.take();
             } catch (const std::runtime_error &e1) {
@@ -375,7 +383,7 @@ void HidThread::run()
                 current_col -= cols;
                 current_row += 1;
             }
-            if (current_row >= rows)
+            if (current_row >= capsense_rows)
             {
                 current_row = 0;
                 current_col = 0;

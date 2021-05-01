@@ -18,6 +18,17 @@
 
 #pragma once
 
+#ifndef MATRIX_CAPSENSE_ROWS
+#    ifdef MATRIX_EXTRA_DIRECT_ROWS
+#        define MATRIX_CAPSENSE_ROWS (MATRIX_ROWS - MATRIX_EXTRA_DIRECT_ROWS)
+#        ifndef MATRIX_EXTRA_DIRECT_COLS
+#            define MATRIX_EXTRA_DIRECT_COLS MATRIX_COLS
+#        endif
+#    else
+#        define MATRIX_CAPSENSE_ROWS MATRIX_ROWS
+#    endif
+#endif
+
 #if defined(CONTROLLER_IS_XWHATSIT_BEAMSPRING_REV_4)
 #    define CAPSENSE_DAC_SCLK   B1
 #    define CAPSENSE_DAC_DIN    B2
@@ -167,7 +178,7 @@
 // F5,  B5,  F4,  B4,  D4,  C6,  D1,  D0
 
 // pull-ups are only necessary for some variants of the TH controller design:
-#if MATRIX_ROWS > 4
+#if MATRIX_CAPSENSE_ROWS > 4
 #    define SETUP_ROW_GPIOS() \
         do { \
             PORTF |= (1 << 5) | (1 << 4); \
@@ -197,7 +208,7 @@
     } while (0)
 #endif
 
-#    if MATRIX_ROWS <= 4
+#    if MATRIX_CAPSENSE_ROWS <= 4
 #        define CAPSENSE_READ_ROWS_NUMBER_OF_BYTES_PER_SAMPLE 2
 #        define CAPSENSE_READ_ROWS_PIN_1 _SFR_IO_ADDR(PINC)
 #        define CAPSENSE_READ_ROWS_PIN_2 _SFR_IO_ADDR(PIND)
@@ -237,8 +248,8 @@
 #        define CAPSENSE_READ_ROWS_EXTRACT_FROM_ARRAY do { dest_row_1 = array[p0++]; dest_row_2 = array[p0++]; dest_row_3 = array[p0++]; dest_row_4 = array[p0++]; } while (0)
 #    endif
 
-#    define CAPSENSE_KEYMAP_ROW_TO_PHYSICAL_ROW(row) (MATRIX_ROWS-1-(row))
-#    define CAPSENSE_PHYSICAL_ROW_TO_KEYMAP_ROW(row) (MATRIX_ROWS-1-(row))
+#    define CAPSENSE_KEYMAP_ROW_TO_PHYSICAL_ROW(row) (MATRIX_CAPSENSE_ROWS-1-(row))
+#    define CAPSENSE_PHYSICAL_ROW_TO_KEYMAP_ROW(row) (MATRIX_CAPSENSE_ROWS-1-(row))
 #    ifndef CAPSENSE_KEYMAP_COL_TO_PHYSICAL_COL
 #        define CAPSENSE_KEYMAP_COL_TO_PHYSICAL_COL(col) (col)
 #    endif
@@ -257,6 +268,7 @@
 #        error "Please select controller type in config.h, or please define each macro that is defined when selecting a particular macro type in matrix.c"
 #    endif
 #endif
+
 
 #ifndef CAPSENSE_KEYBOARD_SETTLE_TIME_US
 #    error "Please define CAPSENSE_KEYBOARD_SETTLE_TIME_US in config.h"

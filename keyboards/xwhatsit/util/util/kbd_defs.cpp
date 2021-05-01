@@ -19716,6 +19716,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_brand_new_model_f_f62_universal_universal_c_lays,
         .cols = 9,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/brand_new_model_f/f62/wcass/wcass.c",
@@ -19723,6 +19724,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_brand_new_model_f_f62_wcass_wcass_c_lays,
         .cols = 9,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/brand_new_model_f/f62/xwhatsit/xwhatsit.c",
@@ -19730,6 +19732,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_brand_new_model_f_f62_xwhatsit_xwhatsit_c_lays,
         .cols = 9,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/brand_new_model_f/f77/universal/universal.c",
@@ -19737,6 +19740,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_brand_new_model_f_f77_universal_universal_c_lays,
         .cols = 11,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/brand_new_model_f/f77/wcass/wcass.c",
@@ -19744,6 +19748,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_brand_new_model_f_f77_wcass_wcass_c_lays,
         .cols = 11,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/brand_new_model_f/f77/xwhatsit/xwhatsit.c",
@@ -19751,6 +19756,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_brand_new_model_f_f77_xwhatsit_xwhatsit_c_lays,
         .cols = 11,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3101_3727_3278_87key/universal/universal.c",
@@ -19758,6 +19764,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3101_3727_3278_87key_universal_universal_c_lays,
         .cols = 23,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3101_3727_3278_87key/xwhatsit_rev4/xwhatsit_rev4.c",
@@ -19765,6 +19772,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3101_3727_3278_87key_xwhatsit_rev4_xwhatsit_rev4_c_lays,
         .cols = 23,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3178/universal/universal.c",
@@ -19772,6 +19780,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3178_universal_universal_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3178/wcass/wcass.c",
@@ -19779,6 +19788,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3178_wcass_wcass_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3178/xwhatsit/xwhatsit.c",
@@ -19786,6 +19796,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3178_xwhatsit_xwhatsit_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3276_3278_75key/universal/universal.c",
@@ -19793,6 +19804,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3276_3278_75key_universal_universal_c_lays,
         .cols = 20,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3276_3278_75key/xwhatsit_rev4/xwhatsit_rev4.c",
@@ -19800,6 +19812,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3276_3278_75key_xwhatsit_rev4_xwhatsit_rev4_c_lays,
         .cols = 20,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3277_66key/universal/universal.c",
@@ -19807,6 +19820,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3277_66key_universal_universal_c_lays,
         .cols = 17,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3277_66key/xwhatsit_rev4/xwhatsit_rev4.c",
@@ -19814,6 +19828,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3277_66key_xwhatsit_rev4_xwhatsit_rev4_c_lays,
         .cols = 17,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3277_78key/universal/universal.c",
@@ -19821,6 +19836,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3277_78key_universal_universal_c_lays,
         .cols = 20,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3277_78key/xwhatsit_rev4/xwhatsit_rev4.c",
@@ -19828,6 +19844,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3277_78key_xwhatsit_rev4_xwhatsit_rev4_c_lays,
         .cols = 20,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3277_split_66key/universal/universal.c",
@@ -19835,6 +19852,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3277_split_66key_universal_universal_c_lays,
         .cols = 18,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/3277_split_66key/xwhatsit_rev4/xwhatsit_rev4.c",
@@ -19842,6 +19860,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_3277_split_66key_xwhatsit_rev4_xwhatsit_rev4_c_lays,
         .cols = 18,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/4978/universal/universal.c",
@@ -19849,6 +19868,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_4978_universal_universal_c_lays,
         .cols = 22,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/5251/universal/universal.c",
@@ -19856,6 +19876,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_5251_universal_universal_c_lays,
         .cols = 23,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/5251/xwhatsit_rev4/xwhatsit_rev4.c",
@@ -19863,6 +19884,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_5251_xwhatsit_rev4_xwhatsit_rev4_c_lays,
         .cols = 23,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/bigfoot_fxt_type_1/universal/universal.c",
@@ -19870,6 +19892,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_bigfoot_fxt_type_1_universal_universal_c_lays,
         .cols = 23,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/bigfoot_fxt_type_1/xwhatsit_rev4/xwhatsit_rev4.c",
@@ -19877,6 +19900,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_bigfoot_fxt_type_1_xwhatsit_rev4_xwhatsit_rev4_c_lays,
         .cols = 23,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/displaywriter/universal/universal.c",
@@ -19884,6 +19908,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_displaywriter_universal_universal_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/displaywriter/xwhatsit/xwhatsit.c",
@@ -19891,6 +19916,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_displaywriter_xwhatsit_xwhatsit_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f104/universal/universal.c",
@@ -19898,6 +19924,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f104_universal_universal_c_lays,
         .cols = 14,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f104/wcass/wcass.c",
@@ -19905,6 +19932,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f104_wcass_wcass_c_lays,
         .cols = 14,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f104/xwhatsit/xwhatsit.c",
@@ -19912,6 +19940,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f104_xwhatsit_xwhatsit_c_lays,
         .cols = 14,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f107/universal/universal.c",
@@ -19919,6 +19948,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f107_universal_universal_c_lays,
         .cols = 15,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f107/wcass/wcass.c",
@@ -19926,6 +19956,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f107_wcass_wcass_c_lays,
         .cols = 15,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f107/xwhatsit/xwhatsit.c",
@@ -19933,6 +19964,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f107_xwhatsit_xwhatsit_c_lays,
         .cols = 15,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f122/universal/universal.c",
@@ -19940,6 +19972,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f122_universal_universal_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f122/wcass/wcass.c",
@@ -19947,6 +19980,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f122_wcass_wcass_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f122/xwhatsit/xwhatsit.c",
@@ -19954,6 +19988,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f122_xwhatsit_xwhatsit_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f50/universal/universal.c",
@@ -19961,6 +19996,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f50_universal_universal_c_lays,
         .cols = 7,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f50/wcass/wcass.c",
@@ -19968,6 +20004,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f50_wcass_wcass_c_lays,
         .cols = 7,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f50/xwhatsit/xwhatsit.c",
@@ -19975,6 +20012,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f50_xwhatsit_xwhatsit_c_lays,
         .cols = 7,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f62/universal/universal.c",
@@ -19982,6 +20020,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f62_universal_universal_c_lays,
         .cols = 8,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f62/wcass/wcass.c",
@@ -19989,6 +20028,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f62_wcass_wcass_c_lays,
         .cols = 8,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/f62/xwhatsit/xwhatsit.c",
@@ -19996,6 +20036,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_f62_xwhatsit_xwhatsit_c_lays,
         .cols = 8,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fat/universal/universal.c",
@@ -20003,6 +20044,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fat_universal_universal_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fat/wcass_locklights/wcass_locklights.c",
@@ -20010,6 +20052,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fat_wcass_locklights_wcass_locklights_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fat/wcass/wcass.c",
@@ -20017,6 +20060,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fat_wcass_wcass_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fat/xwhatsit_locklights/xwhatsit_locklights.c",
@@ -20024,6 +20068,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fat_xwhatsit_locklights_xwhatsit_locklights_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fat/xwhatsit/xwhatsit.c",
@@ -20031,6 +20076,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fat_xwhatsit_xwhatsit_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fext/universal/universal.c",
@@ -20038,6 +20084,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fext_universal_universal_c_lays,
         .cols = 15,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fext/wcass/wcass.c",
@@ -20045,6 +20092,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fext_wcass_wcass_c_lays,
         .cols = 15,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fext/xwhatsit/xwhatsit.c",
@@ -20052,6 +20100,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fext_xwhatsit_xwhatsit_c_lays,
         .cols = 15,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fssk/universal/universal.c",
@@ -20059,6 +20108,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fssk_universal_universal_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fssk/wcass/wcass.c",
@@ -20066,6 +20116,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fssk_wcass_wcass_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fssk/xwhatsit/xwhatsit.c",
@@ -20073,6 +20124,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fssk_xwhatsit_xwhatsit_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fxt_type_2/universal/universal.c",
@@ -20080,6 +20132,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fxt_type_2_universal_universal_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fxt_type_2/wcass/wcass.c",
@@ -20087,6 +20140,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fxt_type_2_wcass_wcass_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/fxt_type_2/xwhatsit/xwhatsit.c",
@@ -20094,6 +20148,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_fxt_type_2_xwhatsit_xwhatsit_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/typewriter_65_85_95/universal/universal.c",
@@ -20101,6 +20156,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_typewriter_65_85_95_universal_universal_c_lays,
         .cols = 16,
         .rows = 4,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/xtant/universal/universal.c",
@@ -20108,6 +20164,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_xtant_universal_universal_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/xtant/wcass/wcass.c",
@@ -20115,6 +20172,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_xtant_wcass_wcass_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/ibm/xtant/xwhatsit/xwhatsit.c",
@@ -20122,6 +20180,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_ibm_xtant_xwhatsit_xwhatsit_c_lays,
         .cols = 12,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
     {
         .kbd_name = "keyboards/xwhatsit/sneakyrobb/beam104/universal/universal.c",
@@ -20129,6 +20188,7 @@ struct kbd_def keyboards[] = {
         .layouts = keyboards_xwhatsit_sneakyrobb_beam104_universal_universal_c_lays,
         .cols = 16,
         .rows = 8,
+        .extra_direct_rows = 0,
     },
 };
 int n_keyboards = sizeof(keyboards)/sizeof(keyboards[0]);

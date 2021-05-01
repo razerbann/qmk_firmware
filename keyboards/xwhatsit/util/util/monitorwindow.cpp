@@ -116,7 +116,7 @@ void MonitorWindow::loadLayout(QString name)
     setMinimumSizeUnits(keyboard_width_uis_times_8, keyboard_height_uis_times_8);
 }
 
-void MonitorWindow::displaySquare(int x, int y, int w, int h, unsigned int col, unsigned int row, QPainter &painter)
+void MonitorWindow::displaySquare(int x, int y, int w, int h, unsigned int col, unsigned int row, QPainter &painter, bool has_threshold)
 {
     QPen textColor(Qt::black);
     painter.setPen(QPen(Qt::black));
@@ -136,7 +136,7 @@ void MonitorWindow::displaySquare(int x, int y, int w, int h, unsigned int col, 
     }
     QRectF rect(x, y, w, h);
     painter.drawRect(rect);
-    if (thresholds.size())
+    if (thresholds.size() && has_threshold)
     {
         uint16_t threshold = get_threshold(col, row);
         painter.setPen(textColor);
@@ -188,7 +188,7 @@ void MonitorWindow::paintEvent(QPaintEvent *event)
             const int h = static_cast<int>(scale_y * (y_ + h_) / 8 + 0.5) - y__;
             const int x = x__ + xadd;
             const int y = y__ + yadd;
-            displaySquare(x, y, w, h, col, row, painter);
+            displaySquare(x, y, w, h, col, row, painter, row < keyboard->rows - keyboard->extra_direct_rows);
         }
     } else {
         unsigned int col, row;
@@ -204,7 +204,7 @@ void MonitorWindow::paintEvent(QPaintEvent *event)
                 const int h = static_cast<int>(scale_y * (row + 1) + 0.5) - y__;
                 const int x = x__ + xadd;
                 const int y = y__ + yadd;
-                displaySquare(x, y, w, h, col, row, painter);
+                displaySquare(x, y, w, h, col, row, painter, row < keyboard->rows - keyboard->extra_direct_rows);
             }
         }
     }

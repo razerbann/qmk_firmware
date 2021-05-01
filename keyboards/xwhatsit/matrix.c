@@ -298,7 +298,7 @@ void test_col_print_data_v2(uint8_t col)
 {
     uprintf("%d: ", col);
     static uint8_t data[NRTIMES*CAPSENSE_READ_ROWS_NUMBER_OF_BYTES_PER_SAMPLE];
-    static uint8_t sums[(TESTATONCE+1) * MATRIX_ROWS];
+    static uint8_t sums[(TESTATONCE+1) * MATRIX_CAPSENSE_ROWS];
     uint8_t to_time = NRTIMES-1;
     uint8_t from_time = 0;
     while (from_time<NRTIMES-1)
@@ -323,7 +323,7 @@ void test_col_print_data_v2(uint8_t col)
             for (j=0;j<curr_TESTATONCE;j++)
             {
                 uint8_t dataj = data[j + from_time];
-                for (k=0; k<MATRIX_ROWS;k++)
+                for (k=0; k<MATRIX_CAPSENSE_ROWS;k++)
                 {
                     sums[ii] += (dataj & 1);
                     dataj >>= 1;
@@ -331,8 +331,8 @@ void test_col_print_data_v2(uint8_t col)
                 }
             }
             if (from_time == 0) {
-                ii = TESTATONCE * MATRIX_ROWS;
-                for (k=0; k<MATRIX_ROWS;k++)
+                ii = TESTATONCE * MATRIX_CAPSENSE_ROWS;
+                for (k=0; k<MATRIX_CAPSENSE_ROWS;k++)
                 {
                     sums[ii] += (st & 1);
                     st >>= 1;
@@ -341,7 +341,7 @@ void test_col_print_data_v2(uint8_t col)
             }
         }
         if (from_time == 0) {
-            for (i=TESTATONCE*MATRIX_ROWS;i<(TESTATONCE+1)*MATRIX_ROWS;i++) {
+            for (i=TESTATONCE*MATRIX_CAPSENSE_ROWS;i<(TESTATONCE+1)*MATRIX_CAPSENSE_ROWS;i++) {
                 if (sums[i] > 0xf) {
                     print("?");
                 } else {
@@ -350,7 +350,7 @@ void test_col_print_data_v2(uint8_t col)
             }
             print(":");
         }
-        for (i=0;i<curr_TESTATONCE*MATRIX_ROWS;i++)
+        for (i=0;i<curr_TESTATONCE*MATRIX_CAPSENSE_ROWS;i++)
         {
             if (sums[i] > 0xf) {
                 print("?");
@@ -518,7 +518,7 @@ uint16_t calibration_measure_all_valid_keys(uint8_t time, uint8_t reps, bool loo
         {
             uint8_t valid_physical_rows = 0;
             uint8_t row;
-            for (row=0; row < MATRIX_ROWS; row++)
+            for (row=0; row < MATRIX_CAPSENSE_ROWS; row++)
             {
                 if (pgm_read_word(&keymaps[0][row][col]) != KC_NO)
                 {
@@ -561,7 +561,7 @@ uint16_t calibration_measure_all_valid_keys(uint8_t time, uint8_t reps, bool loo
 #endif
 
 uint16_t cal_thresholds[CAPSENSE_CAL_BINS];
-matrix_row_t assigned_to_threshold[CAPSENSE_CAL_BINS][MATRIX_ROWS];
+matrix_row_t assigned_to_threshold[CAPSENSE_CAL_BINS][MATRIX_CAPSENSE_ROWS];
 uint16_t cal_tr_allzero;
 uint16_t cal_tr_allone;
 void calibration(void)
@@ -584,7 +584,7 @@ void calibration(void)
     for (col = 0; col < MATRIX_COLS; col++) {
         uint8_t physical_col = CAPSENSE_KEYMAP_COL_TO_PHYSICAL_COL(col);
         uint8_t row;
-        for (row = 0; row < MATRIX_ROWS; row++) {
+        for (row = 0; row < MATRIX_CAPSENSE_ROWS; row++) {
             if (pgm_read_word(&keymaps[0][row][col]) != KC_NO) {
                 uint16_t threshold = measure_middle(physical_col, CAPSENSE_KEYMAP_ROW_TO_PHYSICAL_ROW(row), CAPSENSE_HARDCODED_SAMPLE_TIME, CAPSENSE_CAL_EACHKEY_REPS);
                 uint8_t besti = 0;
@@ -675,6 +675,10 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
 }
 #endif
 
+#if MATRIX_EXTRA_DIRECT_ROWS
+static pin_t extra_direct_pins[MATRIX_EXTRA_DIRECT_ROWS][MATRIX_COLS] = MATRIX_EXTRA_DIRECT_PINS;
+#endif
+
 void real_keyboard_init_basic(void)
 {
     SETUP_UNUSED_PINS();
@@ -720,6 +724,20 @@ void real_keyboard_init_basic(void)
         writePin(D5, 1);
         setPinOutput(B0);
         writePin(B0, 1);
+    #endif
+    #if MATRIX_EXTRA_DIRECT_ROWS
+        for (int row=0; row<MATRIX_EXTRA_DIRECT_ROWS; row++) {
+            for (int col=0; col<MATRIX_COLS; col++) {
+                pin_t pin = extra_direct_pins[row][col];
+                if (pin != NO_PIN) {
+                    #if MATRIX_EXTRA_DIRECT_PINS_NEED_INTERNAL_PULLUP
+                        setPinInputHigh(pin);
+                    #else
+                        setPinInput(pin);
+                    #endif
+                }
+            }
+        }
     #endif
 }
 
@@ -772,7 +790,7 @@ void matrix_print_stats(void)
             for (cal=0;cal<CAPSENSE_CAL_BINS;cal++)
             {
                 uprintf("Cal bin %u, Threshold=%u Assignments:\n", cal, cal_thresholds[cal]);
-                for (row=0;row<MATRIX_ROWS;row++)
+                for (row=0;row<MATRIX_CAPSENSE_ROWS;row++)
                 {
                     uprintf("0x%02X\n", assigned_to_threshold[cal][row]);
                 }
@@ -795,7 +813,7 @@ void matrix_scan_raw(matrix_row_t current_matrix[]) {
             uint8_t real_col = CAPSENSE_KEYMAP_COL_TO_PHYSICAL_COL(col);
             uint8_t d, interference;
             uint8_t d_tested = 0;
-            for (row=0;row<MATRIX_ROWS;row++) {
+            for (row=0;row<MATRIX_CAPSENSE_ROWS;row++) {
                 if (assigned_to_threshold[cal][row] & (((matrix_row_t)1) << col))
                 {
                     if (!d_tested)
@@ -824,10 +842,27 @@ void matrix_scan_raw(matrix_row_t current_matrix[]) {
         #ifdef CAPSENSE_CONDUCTIVE_PLASTIC_IS_PULLED_UP_ON_KEYPRESS
             d = ~d;
         #endif
-        for (row=0;row<MATRIX_ROWS;row++)
+        for (row=0;row<MATRIX_CAPSENSE_ROWS;row++)
         {
             current_matrix[CAPSENSE_PHYSICAL_ROW_TO_KEYMAP_ROW(row)] |= (((matrix_row_t)(d & 1)) << col);
             d >>= 1;
+        }
+    }
+    #endif
+
+    #if MATRIX_EXTRA_DIRECT_ROWS
+    for (int row=0; row<MATRIX_EXTRA_DIRECT_ROWS; row++) {
+        for (int col=0; col<MATRIX_EXTRA_DIRECT_COLS; col++) {
+            pin_t pin = extra_direct_pins[row][col];
+            if (pin != NO_PIN) {
+                uint8_t value = !!readPin(pin);
+                #if MATRIX_EXTRA_DIRECT_PINS_ACTIVE_LOW
+                    value = !value;
+                #endif
+                if (value) {
+                    current_matrix[MATRIX_CAPSENSE_ROWS + row] |= ((matrix_row_t)1) << col;
+                }
+            }
         }
     }
     #endif
