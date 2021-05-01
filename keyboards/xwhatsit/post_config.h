@@ -167,13 +167,21 @@
 // F5,  B5,  F4,  B4,  D4,  C6,  D1,  D0
 
 // pull-ups are only necessary for some variants of the TH controller design:
-#define SETUP_ROW_GPIOS() \
-    do { \
-        PORTF |= (1 << 5) | (1 << 4); \
-        PORTB |= (1 << 5) | (1 << 4); \
-        PORTD |= (1 << 4) | (1 << 1) | (1 << 0); \
-        PORTC |= (1 << 6); \
-    } while (0)
+#if MATRIX_ROWS > 4
+#    define SETUP_ROW_GPIOS() \
+        do { \
+            PORTF |= (1 << 5) | (1 << 4); \
+            PORTB |= (1 << 5) | (1 << 4); \
+            PORTD |= (1 << 4) | (1 << 1) | (1 << 0); \
+            PORTC |= (1 << 6); \
+        } while (0)
+#else
+#    define SETUP_ROW_GPIOS() \
+        do { \
+            PORTD |= (1 << 4) | (1 << 1) | (1 << 0); \
+            PORTC |= (1 << 6); \
+        } while (0)
+#endif
 
 #if 1
 #define SETUP_UNUSED_PINS() do {} while (0)
