@@ -23,7 +23,7 @@
     K24, K25, K35, K75, K65, K64, K84, K85, KC5, KD5, K95, K94, KC4, KF6,       KB4, K04, KE4,  KA1, KB1, KE1, KE0, \
     K26,   K23, K33, K73, K63, K66, K86, K83, KC3, KD3, K93, K96, KC6,  KF1,    KA4, K05, KE5,  KA3, KB3, KE3, K03, \
     K36,    K22, K32, K72, K62, K67, K87, K82, KC2, KD2, K92, K97, KD7,                         KA6, KB6, KE6,      \
-    K56,  K91, K21, K31, K71, K61, K60, K80, K81, KC1, KD1, K90, K51,                K07,       KA2, KB2, KE2, K02, \
+    K56,  K91, K21, K31, K71, K61, K60, K80, K81, KC1, KD1, K90,        K51,         K07,       KA2, KB2, KE2, K02, \
     K44,        K17,                  KF0,                 K10,        K41,     K00, KA0, KB0,  KB7,      KE7       \
 ) { \
     { K00,   K01,   K02,   K03,   K04,   K05,   KC_NO, K07   }, \
