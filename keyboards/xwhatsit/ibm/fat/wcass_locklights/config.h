@@ -278,7 +278,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Uncomment *SOLENOID*/*HAPTIC* defines if you have a solenoid driver (and also in rules.mk, make sure "HAPTIC_ENABLE += SOLENOID" is uncommented)
 //#define HAPTIC_ENABLE_PIN B7
 // We disable haptic feedbeck during USB low power conditions:
-//#define HAPTIC_OFF_IN_LOW_POWER
+//#define HAPTIC_OFF_IN_LOW_POWER 1
 // Change this if you are using a different pin for the solenoid:
 //#define SOLENOID_PIN B6
 // You can also tune the following for your solenoid:
