@@ -1,1 +1,1 @@
-# The default keymap for pingmaster
+# The default keymap for IBM 4704 Pingmaster
