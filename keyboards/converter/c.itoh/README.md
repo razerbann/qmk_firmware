@@ -1,11 +1,11 @@
-# C.ITOH terminal board
+# C.ITOH Terminal Keyboardboard
 
-![C.ITOH terminal board](https://www.keyboardjunk.com/uploads/2018/02/22/Photo%20Jan%2013,%208%2039%2031%20AM.jpg)
+![C.ITOH Terminal Keyboard](https://www.keyboardjunk.com/uploads/2018/02/22/Photo%20Jan%2013,%208%2039%2031%20AM.jpg)
 
 *A short description of the keyboard/project*
 
 * Keyboard Maintainer: [Abdelkafi Ahmed](https://github.com/Razerban)
-* Hardware Supported: C.ITOH terminal board
+* Hardware Supported: C.ITOH Terminal Keyboard
 * Hardware Availability: Rare collector's item
 
 Make example for this keyboard (after setting up your build environment):
