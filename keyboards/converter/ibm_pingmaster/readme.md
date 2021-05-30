@@ -15,7 +15,7 @@ Alps SKCC (vintage Green) models:
 5954339 Japanese 102-key http://deskthority.net/post87127.html#p87127
 6112883 Japanese 102-key http://geekhack.org/index.php?topic=52888.msg1194489#msg1194489
 6112884 Japanese 102-key http://geekhack.org/index.php?topic=50437.msg1193047#msg1193047
-6341739 Chinese 102-key http://geekhack.org/index.php?topic=52888.msg1176566#msg1176566
+6341739 Chinese  102-key http://geekhack.org/index.php?topic=52888.msg1176566#msg1176566
 
 # Connector
 
@@ -54,6 +54,6 @@ Make example for this keyboard (after setting up your build environment):
 
 Flashing example for this keyboard:
 
-    make onverter/ibm_pingmaster:default:flash
+    make converter/ibm_pingmaster:default:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).

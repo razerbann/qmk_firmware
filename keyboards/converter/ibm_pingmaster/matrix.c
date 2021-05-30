@@ -102,7 +102,6 @@ static void enable_break(void)
     print("End\n");
 }
 
-
 void matrix_setup(void)
 {
     ibm4704_init();
