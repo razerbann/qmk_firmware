@@ -5,6 +5,6 @@ enum layer_names {
     _BASE,
     _WIN = _BASE,
     _MAC,
-    _FN,
+    _FN1,
     _FN2
 };
