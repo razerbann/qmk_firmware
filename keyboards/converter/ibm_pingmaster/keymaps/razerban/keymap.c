@@ -14,16 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-
-// Defines names for use in layer keycodes and the keymap
-enum layer_names {
-    _WIN,
-    _MAC,
-    _FN1,
-    _FN2
-};
-
-#define ESC_CTRL LCTL_T(KC_ESC)
+#include "layer_names.h"
+#include "custom_keycodes.h"
+#include "tap_dance.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_WIN] = LAYOUT(
