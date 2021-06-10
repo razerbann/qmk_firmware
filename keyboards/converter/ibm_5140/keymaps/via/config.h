@@ -15,24 +15,3 @@
  */
 
 #pragma once
-
-#include "config_common.h"
-
-/* USB Device descriptor parameter */
-#define VENDOR_ID       0xABDE
-#define PRODUCT_ID      0x4803
-#define DEVICE_VER      0x4803
-#define MANUFACTURER    IBM
-#define PRODUCT         5140 Convertible Keyboard Module
-
-/* key matrix size */
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 15
-
-/*
- * Keyboard Matrix Assignments
- */
-#define MATRIX_ROW_PINS { B0, B1, B2, B3, B7, D0 }
-#define MATRIX_COL_PINS { F0, F1, F4, F5, F6, F7, B6, B5, B4, D7, D6, D4, D5, C7, C6 }
-
-#define DIODE_DIRECTION ROW2COL
