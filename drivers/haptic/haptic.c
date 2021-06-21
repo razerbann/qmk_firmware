@@ -19,6 +19,7 @@
 #include "progmem.h"
 #include "debug.h"
 #include "power.h"
+#include "action_tapping.h"
 #ifdef DRV2605L
 #    include "DRV2605L.h"
 #endif
