@@ -293,6 +293,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOLENOID_DEFAULT_DWELL 4
 #define SOLENOID_MIN_DWELL 4
 //#define SOLENOID_MAX_DWELL 100
+#define NO_HAPTIC_MOD
 
 // If the lock lights are not used, then please don't define the below pins,
 // or leave them set as unused pins:
